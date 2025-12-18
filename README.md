@@ -48,21 +48,26 @@ Este repositório contém o **código-fonte** e a **documentação** do projeto 
 
 📦 Produto e Estoque 
 Classes: Produto, ProdutoFisico, ProdutoDigital
+
 Testes
 
 👤 Cliente e Endereço
 Classes: Cliente, Endereco
+
 Testes
 
 🛒 Carrinho e Pedido
 Classes: Carrinho, ItemCarrinho, Pedido, ItemPedido
+
 Testes
 
 💳 Pagamento, Frete e Cupom
 Classes: Pagamento, Frete, Cupom
+
 Testes
 
 🖥️ Interface CLI, Persistência e Relatórios
+
 Integração entre os módulos do sistema; 
 Interface via linha de comando (CLI);
 Persistência de dados (dados.py);
