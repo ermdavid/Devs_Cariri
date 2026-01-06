@@ -10,3 +10,7 @@ class Cliente:
         if isinstance(other, Cliente):
             return self.cpf == other.cpf or self.email == other.email
         return False
+
+    @property
+    def email(self):
+        return self._email
