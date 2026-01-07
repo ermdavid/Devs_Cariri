@@ -1,4 +1,5 @@
 class Cliente:
+    """Classe onde com atributos para identificação do cliente"""
     def __init__(self, id, nome, email, cpf):
         self.id = id
         self.nome = nome
@@ -7,6 +8,7 @@ class Cliente:
         self.enderecos = []  # Lista de objetos da classe Endereco
 
     def __eq__(self, other):
+        """Ferifica se o email ou o CPF já foram cadastrados"""
         if isinstance(other, Cliente):
             return self.cpf == other.cpf or self.email == other.email
         return False
