@@ -16,3 +16,20 @@ class Cliente:
     @property
     def email(self):
         return self._email
+
+    @email.setter
+    def email(self, valor):
+        if "@" not in valor: # Validação simplificada
+            raise ValueError("Email inválido")
+        self._email = valor
+
+    @property
+    def cpf(self):
+        return self._cpf
+
+    @cpf.setter
+    def cpf(self, valor):
+#verificação simples
+        if not valor.isdigit(): 
+            raise ValueError("CPF deve conter apenas números")
+        self._cpf = valor
