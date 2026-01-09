@@ -1,4 +1,4 @@
-class ItemCarrinho:
+class ItemCarrinho: #Rafael Pereira
 
     def __init__(self, produto, quantidade: int):
         self._produto = produto
