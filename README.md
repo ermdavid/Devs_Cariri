@@ -61,18 +61,19 @@ Classes: Carrinho, ItemCarrinho, Pedido, ItemPedido
 
 Testes
 
-💳 Pagamento, Frete e Cupom
-Class: Pagamento
-Atributos: data, forma (PIX, Crédito, Débito, Boleto), valor
-Métodos: validar, confirmar, estornar
+**💳 Pagamento, Frete e Cupom**
 
-Class: Cupom
-Atributos: código, tipo (Valor ou Percentual), valor, data_validade, uso_maximo, usos_feitos, categorias_elegiveis
-Métodos: validar, expirado, esgotado, calcular_desconto, registrar_uso
+**Class: Pagamento**
+- Atributos: pedido (Pedido), valor, forma (PIX, Crédito, Débito, Boleto), data
+- Métodos: processar, estornar, cancelar
 
-Class: Frete
-Atributos: uf, cidade, cep, valor, prazo 
-Métodos: tem_frete, calcular_valor, calcular_prazo, 
+**Class: Cupom**
+- Atributos: código, tipo (Valor ou Percentual), valor, data_validade, uso_maximo, usos_feitos, categorias_elegiveis
+- Métodos: validar_uso, calcular_desconto, registrar_uso
+
+**Class: Frete**
+- Atributos: uf, endereco (cidade, uf, cep), valor, prazo
+- Métodos: buscar_regra, calcular_preview (calcula o valor e o prazo)
 
 
 🖥️ Interface CLI, Persistência e Relatórios
