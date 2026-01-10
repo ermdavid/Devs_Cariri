@@ -1,19 +1,35 @@
-from datetime import date
+import json
+from pathlib import Path
+from datetime import date, timedelta
 
+
+def carregar_config_cupom():
+    path = Path(__file__).parent.parent.parent / "settings.json"
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)["coupon"]
+    
 class Cupom:
-    def __init__(self, codigo: str, tipo: str, valor: float, data_validade: date, uso_maximo: int, usos_feitos: int, categorias_elegiveis=None):
-        
+    def __init__(self, codigo: str, tipo: str, valor: float, data_validade: date = None, uso_maximo: int = 0, usos_feitos: int = 0, categorias_elegiveis=None):
+
         #verifica no momento da criação do cupom se o uso máximo e os usos feitos são válidos
         if uso_maximo <= 0:
             raise ValueError("Uso máximo deve ser maior que zero")
-        
+
         if usos_feitos < 0 or usos_feitos > uso_maximo:
             raise ValueError("Usos feitos inválido")
 
         self.__codigo = codigo
         self.tipo = tipo.upper() #VALOR ou PERCENTUAL
         self.valor = valor
-        self.data_validade = data_validade
+
+        config = carregar_config_cupom()
+        validade_padrao = config["default_validity_days"]
+
+        if data_validade is None:
+            self.data_validade = date.today() + timedelta(days=validade_padrao)
+        else:
+            self.data_validade = data_validade
+
         self.uso_maximo = uso_maximo
         self.__usos_feitos = usos_feitos
         self.__categorias_elegiveis = categorias_elegiveis or []
@@ -62,7 +78,7 @@ class Cupom:
     def uso_maximo(self, uso_maximo):
         if uso_maximo <= 0:
             raise ValueError("Uso máximo deve ser maior que zero")
-        
+
         self.__uso_maximo = uso_maximo
 
     @property
@@ -139,11 +155,15 @@ class Cupom:
 
     @classmethod
     def from_dict(cls, data: dict):
+        data_validade = None
+        if "data_validade" in data:
+            data_validade = date.fromisoformat(data["data_validade"])
+
         return cls(
             codigo=data["codigo"],
             tipo=data["tipo"],
             valor=data["valor"],
-            data_validade=date.fromisoformat(data["data_validade"]),
+            data_validade=data_validade,
             uso_maximo=data["uso_maximo"],
             usos_feitos=data["usos_feitos"],
             categorias_elegiveis=data.get("categorias_elegiveis")

@@ -70,5 +70,8 @@
       "valor": 30,
       "prazo": 10
     }
+  },
+  "coupon": {
+    "default_validity_days": 30
   }
 }
