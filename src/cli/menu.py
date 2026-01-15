@@ -3,7 +3,7 @@ from models.cliente import Cliente
 from models.produto import Produto
 
 def menu():
-    print("\n=== LOJA DEVSCARIRI ===")
+    print("\n=== LOJA DevsCariri ===")
     print("1 - Cadastrar Cliente")
     print("2 - Cadastrar Produto")
     print("3 - Listar Produtos")
