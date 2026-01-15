@@ -94,19 +94,3 @@ class Produto:
   def __ne__(self, other):
     return not self.__eq__(other)
 
-#Sub-classes 
-class Produto_fisico(Produto):
-  def __init__(self, sku:str, nome:str, categoria:str, preco_unitario:float = 0.0, quantidade_estoque:int = 0, peso_kg:float = 0.0, situacao = "ativo", **kwargs):
-    super().__init__(sku, nome, categoria, preco_unitario, quantidade_estoque)
-    self.peso_kg = peso_kg
-  def __str__(self):
-    exibir_detalhes = super().__str__()
-    return f'{exibir_detalhes}| Tipo: físico| Peso: {self.peso_kg}'
-
-class Produto_digital(Produto):
-  def __init__(self, sku:str, nome:str, categoria:str, preco_unitario:float = 0.0, quantidade_estoque:int = 0, tamanho_mb:float = 0.0, situacao = "ativo", **kwargs):
-    super().__init__(sku, nome, categoria, preco_unitario, quantidade_estoque)
-    self.tamanho_mb = tamanho_mb
-  def __str__(self):
-    exibir_detalhes = super().__str__()
-    return f'{exibir_detalhes}| Tipo: digital| Tamanho: {self.tamanho_mb}'
