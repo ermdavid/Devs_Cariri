@@ -1,14 +1,7 @@
 from repository import clientes, produtos
 from models.cliente import Cliente
 from models.produto import Produto
-
-def menu():
-    print("\n=== LOJA DevsCariri ===")
-    print("1 - Cadastrar Cliente")
-    print("2 - Cadastrar Produto")
-    print("3 - Listar Produtos")
-    print("4 - Gerar Relatório")
-    print("0 - Sair")
+from reports.relatorio_vendas import relatorio_vendas
 
 def executar(opcao):
     if opcao == "1":
@@ -29,5 +22,17 @@ def executar(opcao):
         print("Produto cadastrado!")
 
     elif opcao == "3":
-        for p in produtos:
-            print(p)
+        if not produtos:
+            print("Nenhum produto cadastrado.")
+        else:
+            for p in produtos:
+                print(p)
+
+    elif opcao == "4":
+        relatorio_vendas()
+
+    elif opcao == "0":
+        print("Encerrando o sistema...")
+
+    else:
+        print("Opção inválida!")
