@@ -8,4 +8,4 @@ class Endereco:
         self.numero = numero
         self.cidade = cidade
         self.estado = estado
-        self.cep = cep
+        self.cep = cep    
