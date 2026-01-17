@@ -1,5 +1,6 @@
 class Cliente:
     """Classe onde com atributos para identificação do cliente"""
+
     def __init__(self, id, nome, email, cpf):
         self.id = id
         self.nome = nome
@@ -19,7 +20,7 @@ class Cliente:
 
     @email.setter
     def email(self, valor):
-        if "@" not in valor: # Validação simplificada
+        if "@" not in valor:  # Validação simplificada
             raise ValueError("Email inválido")
         self._email = valor
 
@@ -29,7 +30,49 @@ class Cliente:
 
     @cpf.setter
     def cpf(self, valor):
-#verificação simples
-        if not valor.isdigit(): 
+        # verificação simples
+        if not valor.isdigit():
             raise ValueError("CPF deve conter apenas números")
         self._cpf = valor
+
+    def adicionar_endereco(self, endereco):
+        """Adiciona um endereço à lista de endereços do cliente"""
+        if endereco not in self.enderecos:
+            self.enderecos.append(endereco)
+            # Vincula o cliente ao endereço se ainda não estiver vinculado
+            if endereco.cliente != self:
+                endereco.cliente = self
+        else:
+            raise ValueError("Endereço já cadastrado para este cliente")
+
+    def remover_endereco(self, endereco):
+        """Remove um endereço da lista de endereços do cliente"""
+        if endereco in self.enderecos:
+            self.enderecos.remove(endereco)
+        else:
+            raise ValueError("Endereço não encontrado na lista do cliente")
+
+    def listar_enderecos(self):
+        """Retorna a lista de endereços do cliente"""
+        return self.enderecos
+
+    def buscar_endereco_por_id(self, id_endereco):
+        """Busca um endereço pelo ID"""
+        for endereco in self.enderecos:
+            if endereco.id == id_endereco:
+                return endereco
+        return None
+
+    def quantidade_enderecos(self):
+        """Retorna a quantidade de endereços cadastrados"""
+        return len(self.enderecos)
+
+    def to_dict(self):
+        """Converte o cliente para um dicionário"""
+        return {
+            'id': self.id,
+            'nome': self.nome,
+            'email': self.email,
+            'cpf': self.cpf,
+            'enderecos': [endereco.to_dict() for endereco in self.enderecos]
+        }
