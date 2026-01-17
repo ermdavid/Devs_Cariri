@@ -1,5 +1,6 @@
 class Produto:
   _all_skus = set() # Variável de classe para armazenar todos os SKUs existentes
+  _all_produtos = [] # Variável de classe para armazenar todos os produtos criados
   def __init__(self, sku:str, nome:str, categoria:str, preco_unitario:float = 0.0, quantidade_estoque:int = 0, situacao = "ativo", **kwargs):
     if sku in Produto._all_skus:
       raise ValueError(f"SKU '{sku}' já existe. Não é possível criar produtos com SKUs duplicados.") #Impedir duplicação dos sku
@@ -54,12 +55,14 @@ class Produto:
       raise ValueError("O estoque não pode ser negativo")
     self._quantidade_estoque = int(quantidade_estoque)
 
-#Limpar registro sku
+#Limpar registros
   @classmethod
   def clear_all_skus(cls):
     """Limpa o registro de todos os SKUs (útil para testes)."""
     cls._all_skus.clear()
-    print("Registro de SKUs limpo.")
+  def clear_all_produtos(self):
+    """Limpa o registro de todos os produtos (útil para testes)."""
+    self._all_produtos.clear()
 
 #Métodos da classe
   def adicionar_estoque(self, quantidade):
@@ -78,7 +81,7 @@ class Produto:
         print(f"Não há {quantidade} unidades disponíveis em estoque para o produto {self.nome}. Estoque atual: {self.quantidade_estoque}")
     else:
       print("A quantidade deve ser maior que zero.")
-
+  
 #Métodos especiais
   def __str__(self):
     return f"Produto: {self.nome} (SKU: {self.sku}, Categoria: {self.categoria}, Preço: {self.preco_unitario}, Estoque: {self.quantidade_estoque}, Situação: {self.situacao})"
@@ -93,4 +96,13 @@ class Produto:
 
   def __ne__(self, other):
     return not self.__eq__(other)
+
+
+class Produto_digital(Produto):
+  def __init__(self, sku:str, nome:str, categoria:str, preco_unitario:float = 0.0, quantidade_estoque:int = 0, tamanho_mb:float = 0.0, situacao = "ativo", **kwargs):
+    super().__init__(sku, nome, categoria, preco_unitario, quantidade_estoque)
+    self.tamanho_mb = tamanho_mb
+  def __str__(self):
+    exibir_detalhes = super().__str__()
+    return f'{exibir_detalhes}| Tipo: digital| Tamanho: {self.tamanho_mb}'
 
