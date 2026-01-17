@@ -1,3 +1,7 @@
+from produto import Produto
+from produto_digital import ProdutoDigital
+from produto_fisico import ProdutoFisico
+
 class ItemCarrinho: #Rafael Pereira
 
     def __init__(self, produto, quantidade: int):
@@ -20,7 +24,7 @@ class ItemCarrinho: #Rafael Pereira
 
     def calcular_subtotal_item(self) -> float:
         # O subtotal considera o preço unitário do produto * quantidade
-        return self._produto.preco * self._quantidade
+        return self._produto.preco_unitario * self._quantidade
 
     def __repr__(self):
         return f"{self._produto.nome} (x{self._quantidade}) - R$ {self.calcular_subtotal_item():.2f}"
@@ -37,7 +41,7 @@ class Carrinho:
     def adicionar_item(self, produto, quantidade: int):
         # Verifica se o produto já existe no carrinho para apenas somar a quantidade
         for item in self._itens:
-            if item.produto.id == produto.id:
+            if item.produto.sku == produto.sku:
                 item.quantidade += quantidade
                 return
 
