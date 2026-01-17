@@ -1,4 +1,7 @@
 from produto import Produto
+from produto_digital import ProdutoDigital
+from produto_fisico import ProdutoFisico
+
 class ItemCarrinho: #Rafael Pereira
 
     def __init__(self, produto, quantidade: int):
