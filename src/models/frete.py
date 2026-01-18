@@ -3,7 +3,7 @@ from pathlib import Path
 
 from endereco import Endereco
 from carrinho import Carrinho
-from produto import ProdutoFisico
+from produto_fisico import ProdutoFisico
 
 # localiza o settings.json para armazenar as regras de frete
 def carregar_tabela_frete():
