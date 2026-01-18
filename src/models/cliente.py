@@ -1,7 +1,8 @@
 class Cliente:
-    """Classe onde com atributos para identificação do cliente"""
+    """Classe Cliente tem-um __init__, __eq__, __str__, email, """
 
     def __init__(self, id, nome, email, cpf):
+        """Método construtor com os parâmetros: self, id, nome, email, cpf"""
         self.id = id
         self.nome = nome
         self._email = email  # Privado para usar @property
@@ -14,25 +15,29 @@ class Cliente:
             return self.cpf == other.cpf or self.email == other.email
         return False
 
+    def __str__(self):
+        """ Retorna nome e CPF """
+    return f"{self.nome} ({self.cpf})"
+
     @property
+    
     def email(self):
         return self._email
 
     @email.setter
+    
     def email(self, valor):
-        if "@" not in valor:  # Validação simplificada
-            raise ValueError("Email inválido")
-        self._email = valor
-
+        if not re.match(r"[^@]+@[^@]+\.[^@]+", valor):
+            raise ValueError("Email inválido.")
     @property
     def cpf(self):
         return self._cpf
 
     @cpf.setter
     def cpf(self, valor):
-        # verificação simples
-        if not valor.isdigit():
-            raise ValueError("CPF deve conter apenas números")
+    """Verifica se o CPF tem somente números e se a quantidade são 11 dígitos."""
+        if not valor.isdigit() or len(valor) != 11:
+          raise ValueError("CPF deve conter exatamente 11 dígitos numéricos.")
         self._cpf = valor
 
     def adicionar_endereco(self, endereco):
