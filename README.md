@@ -89,7 +89,6 @@ Documentação do projeto (README.md)
 
 ### ✅ Pré-requisitos
 - Python 3.10 ou superior
-- Git (opcional, para clonar o repositório)
 
 Verifique a versão do Python:
 ```bash
