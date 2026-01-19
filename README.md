@@ -1,89 +1,101 @@
 # 🛍️ Sistema de Loja Virtual Simplificada
 **Projeto Final da Disciplina de Programação Orientada a Objetos (POO)**
 
+---
+
 ## 📄 Visão Geral
-O objetivo principal deste projeto é desenvolver um sistema de linha de comando (CLI) ou API mínima (FastAPI/Flask, opcional) para uma loja virtual: cadastro de produtos e clientes, carrinho, pedido, pagamento, cálculo de frete, emissão de nota/sumário de compra e relatórios de vendas, utilizando conceitos e pilares de POO, enfatizando herança, encapsulamento, validações e composição. 
 
-## 💻 Funcionalidades Principais 
+Este projeto tem como objetivo desenvolver um **Sistema de Loja Virtual Simplificada**, utilizando **Python** e os princípios da **Programação Orientada a Objetos (POO)**.  
 
-• Gestão de produtos e clientes;
+O sistema funciona por meio de uma **Interface de Linha de Comando (CLI)**, simulando as principais funcionalidades de uma loja virtual, incluindo o cadastro de produtos e clientes, gerenciamento de carrinho de compras, processamento de pedidos e pagamentos, cálculo de frete, emissão de nota/sumário de compra e geração de relatórios de vendas.
 
-• Carrinho de compras;
+Durante o desenvolvimento, foram aplicados os principais pilares da POO, com ênfase em **encapsulamento, herança, composição e validações de regras de negócio**, além de persistência simples de dados.
 
-• Processamento de pedidos e pagamento;
+---
 
-• Cálculo de frete;
+## 💻 Funcionalidades Principais
 
-• Emissão de nota de compra;
+- Gestão de produtos e controle de estoque;
+- Cadastro e gerenciamento de clientes e endereços;
+- Carrinho de compras com cálculo de subtotal;
+- Processamento de pedidos e pagamentos;
+- Cálculo de frete;
+- Emissão de nota/sumário de compra;
+- Geração de relatórios de vendas.
 
-• Relatórios de vendas.
+---
 
 ## 🎓 Disciplina e Instituição
-• Disciplina: Programação Orientada a Objetos (POO)
 
-• Período: 2025.2
+- **Disciplina:** Programação Orientada a Objetos (POO)  
+- **Período:** 2025.2  
+- **Curso:** Tecnologia em Banco de Dados  
+- **Instituição:** Universidade Federal do Cariri (UFCA)  
+- **Professor:** Dr. Jayr Alencar Pereira  
 
-• Curso: Tecnologia em Banco de Dados
+---
 
-• Instituição: Universidade Federal do Cariri (UFCA)
+## 👨‍👩‍👧‍👦 Grupo: Devs Cariri
 
-• Professor: Dr. Jayr Alencar Pereira
+- **Aline Pereira de Lima**  
+  Responsável pela implementação do registro de pagamentos, cálculo de frete e aplicação das regras de cupons de desconto.
 
-## 👨‍👩‍👧‍👦 Grupo: Devs Cariri 
+- **Diego Gomes Pereira**  
+  Responsável pelo cadastro de clientes, validação e gerenciamento de endereços.
 
-• Aline Pereira de Lima – responsável pela implementação do registro de pagamentos, cálculo de frete e aplicação das regras de cupons de desconto.
+- **Ermeson David dos Santos Silva**  
+  Responsável pela geração de relatórios, implementação da interface CLI e integração geral do sistema.
 
-• Diego Gomes Pereira – responsável pelo cadastro de clientes, validação e gerenciamento de endereços.
+- **Fernando Pablo Silva Oliveira**  
+  Responsável pelo desenvolvimento da classe de produtos e pelo controle de estoque.
 
-• Ermeson David dos Santos Silva – responsável pela geração de relatórios, implementação da interface CLI e integração geral do sistema.
+- **Rafael Pereira da Silva**  
+  Responsável pela implementação do carrinho de compras e pelo cálculo de subtotais.
 
-• Fernando Pablo Silva Oliveira – responsável pelo desenvolvimento da classe de produtos e pelo controle de estoque.
+Este repositório contém o **código-fonte** e a **documentação** do projeto final da disciplina de Programação Orientada a Objetos.
 
-• Rafael Pereira da Silva – responsável pela implementação do carrinho de compras e pelo cálculo de subtotais.
-
-Este repositório contém o **código-fonte** e a **documentação** do projeto final da disciplina de POO. 
-
+---
 
 ## 👤 Principais Classes do Sistema
 
-📦 Produto e Estoque 
-Classes: Produto, ProdutoFisico, ProdutoDigital
+### 📦 Produto e Estoque
+- Classes: `Produto`, `ProdutoFisico`, `ProdutoDigital`
+- Responsáveis pelo cadastro, validação, herança entre tipos de produtos e controle de estoque.
 
-Testes
+### 👤 Cliente e Endereço
+- Classes: `Cliente`, `Endereco`
+- Gerenciam dados pessoais, validações e associação de endereços.
 
-👤 Cliente e Endereço
-Classes: Cliente, Endereco
+### 🛒 Carrinho e Pedido
+- Classes: `Carrinho`, `ItemCarrinho`, `Pedido`, `ItemPedido`
+- Responsáveis pela manipulação de itens, cálculo de subtotais, criação de pedidos e controle de estados.
 
-Testes
+---
 
-🛒 Carrinho e Pedido
-Classes: Carrinho, ItemCarrinho, Pedido, ItemPedido
+### 💳 Pagamento, Frete e Cupom
 
-Testes
+#### Classe: Pagamento
+- **Atributos:** pedido (Pedido), valor, forma (PIX, Crédito, Débito, Boleto), data  
+- **Métodos:** processar, estornar, cancelar  
 
-**💳 Pagamento, Frete e Cupom**
+#### Classe: Cupom
+- **Atributos:** código, tipo (Valor ou Percentual), valor, data_validade, uso_maximo, usos_feitos, categorias_elegiveis  
+- **Métodos:** validar_uso, calcular_desconto, registrar_uso  
 
-**Class: Pagamento**
-- Atributos: pedido (Pedido), valor, forma (PIX, Crédito, Débito, Boleto), data
-- Métodos: processar, estornar, cancelar
+#### Classe: Frete
+- **Atributos:** endereço (cidade, UF, CEP), valor, prazo  
+- **Métodos:** buscar_regra, calcular_preview (cálculo do valor e prazo estimado)
 
-**Class: Cupom**
-- Atributos: código, tipo (Valor ou Percentual), valor, data_validade, uso_maximo, usos_feitos, categorias_elegiveis
-- Métodos: validar_uso, calcular_desconto, registrar_uso
+---
 
-**Class: Frete**
-- Atributos: uf, endereco (cidade, uf, cep), valor, prazo
-- Métodos: buscar_regra, calcular_preview (calcula o valor e o prazo)
+## 🖥️ Interface CLI, Persistência e Relatórios
 
-
-🖥️ Interface CLI, Persistência e Relatórios
-
-Integração entre os módulos do sistema; 
-Interface via linha de comando (CLI);
-Persistência de dados (dados.py);
-Geração de relatórios;
-Arquivos de configuração (settings.json);
-Documentação do projeto (README.md)
+- Integração entre os módulos do sistema;
+- Interface via **linha de comando (CLI)**;
+- Persistência de dados em arquivos JSON;
+- Geração de relatórios de vendas e financeiros;
+- Arquivos de configuração (`settings.json`);
+- Documentação do projeto (`README.md`).
 
 ## 🧭 Passo a Passo de Execução do Projeto
 
