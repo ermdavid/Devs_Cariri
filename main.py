@@ -1,12 +1,6 @@
-from cli.menu import menu, executar
-
-def main():
-    while True:
-        menu()
-        opcao = input("Escolha: ")
-        if opcao == "0":
-            break
-        executar(opcao)
+from src.cli.menu_principal import menu_principal
+from src.dados.seed import seed
 
 if __name__ == "__main__":
-    main()
+    seed()
+    menu_principal()
