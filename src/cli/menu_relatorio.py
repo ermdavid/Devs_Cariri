@@ -2,8 +2,7 @@ from src.reports.faturamento import relatorio_faturamento
 from src.reports.produtos import relatorio_produtos_mais_vendidos
 from src.reports.pedidos import relatorio_pedidos_por_status
 
-
-def menu_relatorios():
+def menu_relatorio():
     while True:
         print("\n=== RELATÓRIOS ===")
         print("1 - Faturamento por período")
