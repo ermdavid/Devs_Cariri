@@ -84,3 +84,28 @@ Persistência de dados (dados.py);
 Geração de relatórios;
 Arquivos de configuração (settings.json);
 Documentação do projeto (README.md)
+
+## 🧭 Passo a Passo de Execução do Projeto
+
+### ✅ Pré-requisitos
+- Python 3.10 ou superior
+- Git (opcional, para clonar o repositório)
+
+Verifique a versão do Python:
+```bash
+python --version
+```
+### ▶️ Como executar o projeto
+
+1. Clone o repositório:
+```bash
+git clone https://github.com/ermdavid/Devs_Cariri.git
+```
+2. Acesse a pasta do projeto:
+```bash
+cd Devs_Cariri
+```
+3. Execute o sistema:
+```bash
+python main.py
+```
