@@ -1,8 +1,8 @@
 from src.cli.menu_cliente import menu_cliente
 from src.cli.menu_produto import menu_produto
 from src.cli.menu_carrinho import menu_carrinho
+from src.cli.menu_relatorios import menu_relatorios
 from src import sessao
-
 
 def menu_principal():
     while True:
@@ -12,6 +12,7 @@ def menu_principal():
 
         if sessao.cliente_atual is not None:
             print("3 - Carrinho")
+            print("4 - Relatórios")
 
         print("0 - Sair")
 
@@ -25,6 +26,9 @@ def menu_principal():
 
         elif opcao == "3" and sessao.cliente_atual is not None:
             menu_carrinho()
+
+        elif opcao == "4" and sessao.cliente_atual is not None:
+            menu_relatorios()
 
         elif opcao == "0":
             print("Encerrando sistema.")
