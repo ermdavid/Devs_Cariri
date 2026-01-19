@@ -1,7 +1,7 @@
 from src.cli.menu_cliente import menu_cliente
 from src.cli.menu_produto import menu_produto
 from src.cli.menu_carrinho import menu_carrinho
-from src.cli.menu_relatorios import menu_relatorios
+from src.cli.menu_relatorio import menu_relatorio
 from src import sessao
 
 def menu_principal():
